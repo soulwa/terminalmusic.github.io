@@ -1,0 +1,8 @@
+- name: home
+  link: /
+- name: bio
+  link: /bio/
+- name: shows
+  link: /shows/
+- name: live
+  link: /live/

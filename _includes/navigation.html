@@ -1,0 +1,11 @@
+<header class="mb-auto">
+  <div>
+    <nav class="mb-0 nav justify-content-center float-md-end">
+      {% for item in site.data.navigation %}
+        <a class="nav-link" href="{{ item.link }}">
+          {{ item.name }}
+        </a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

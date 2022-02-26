@@ -1,0 +1,49 @@
+---
+layout: black
+---
+
+{% include navigation.html %}
+{% assign shows_newest_first = site.shows | sort: "date" | reverse %}
+<main>
+    <div class="py-5 bg-black text-center">
+        <div class="d-flex">
+            <div class="nav flex-column" id="showbar">
+                {% for show in shows_newest_first %}
+                <div class="nav-item py-3">
+                     <a class="nav-link" href="#{{show.name | slugify}}">{{ show.name }} {{ show.date | date: "%Y/%m/%d" }}</a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="container">
+                <h1>Shows</h1>
+                <div class="row row-cols-1 gy-5 align-items-center">
+                    {% for show in shows_newest_first %}
+                    <div class="col" id="{{ show.name | slugify}}">
+                        <div class="card bg-black mx-auto py-5" style="width: 50rem;">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="card-body" >
+                                        <div class="card-text">
+                                                <h3><a href="{{ show.spotify_url }}" style="text-decoration: none;">{{ show.name }}</a></h3>
+                                                <p>{{ show.content }}</p>
+                                                <p>available on
+                                                <a href="{{ show.spotify_url }}">spotify</a>
+                                                and
+                                                <a href="{{ show.spinitron_url}}">spinitron</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <iframe src="{{ show.spotify_url }}" width="100%" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>  
+    </div>
+</main>
